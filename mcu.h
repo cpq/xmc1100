@@ -82,6 +82,16 @@ static inline void gpio_toggle(uint16_t pin) {
   gpio_write(pin, gpio->OUT & BIT(n) ? 0 : 1);
 }
 
+struct usic {
+  volatile uint32_t RSVD1, CCFG, ID, KSCFG, FDR, BRG, INPR, DXCR[6], SCTR, TCSR,
+      PCR, CCR, CMTR, PSR, PSCR, RBUFSR, RBUF, RBUFD, RBUF0, RBUF1, RBUF01SR,
+      FMR, RSVD2[5], TBUF[32], BYP, BYPCR, TBCTR, RBCTR, TRBPTR, TRBSR, TRBSCR,
+      OUTR, OUTDR;
+};
+#define USIC(N) ((struct usic *) (0x48000000 + 0x200 * (N)))
+#define UART_DEBUG USIC(0)
+
+extern void uart_write(void *uart, const void *buf, size_t len);
+
 static inline void clock_init(void) {
-  systick_init(FREQ / 1000);
 }
