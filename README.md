@@ -9,7 +9,7 @@ available from the Infineon website.
 
 ## xmc1100 2Go devboard
 
-<img src="xmc2go.webp" width="200" />
+<img src="xmc2go.webp" width="600" />
 
 This little development board has a built-in j-link compatible debugger,
 which makes it easy to program and debug using Segger j-link software.
